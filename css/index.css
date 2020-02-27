@@ -1,0 +1,683 @@
+html {
+  font-size: 100px;
+  /*640px设计稿中，1rem-100px*/
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: #f4f4f4;
+  font-family: "楷体";
+  position: relative;
+  z-index: -4;
+}
+
+.mainBox {
+  margin: 0 auto;
+  max-width: 640px;
+  height: 100%;
+  background: #fff;
+  position: relative;
+  z-index: -3;
+}
+
+.loadingBox,
+.phoneBox,
+.messageBox,
+.cubeBox,
+.detailBox {
+  display: none;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.loadingBox {
+  background: #000;
+}
+
+.loadingBox .title {
+  height: 1.4rem;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  margin-top: -2.2rem;
+  color: #fff;
+  /*-.7中间+1.5距离中间靠上的位移*/
+}
+
+.loadingBox .title h1 {
+  line-height: 0.75rem;
+  font-size: 0.5rem;
+  text-align: center;
+}
+
+.loadingBox .title h2 {
+  margin-top: 0.2rem;
+  line-height: 0.45rem;
+  text-align: center;
+  letter-spacing: 0.04rem;
+  font-size: 0.26rem;
+}
+
+.loadingBox .progress {
+  width: 4.6rem;
+  height: 0.3rem;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0.85rem 0 0 -2.3rem;
+  border-radius: 0.15rem;
+}
+
+.loadingBox .progress .current {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: -webkit-linear-gradient(left bottom, #5CB85C 0%, #5CB85C 25%, #74C274 25%, #74C274 50%, #5CB85C 50%, #5CB85C 75%, #74C274 75%, #74C274 100%);
+  background: linear-gradient(left bottom, #5CB85C 0%, #5CB85C 25%, #74C274 25%, #74C274 50%, #5CB85C 50%, #5CB85C 75%, #74C274 75%, #74C274 100%);
+  background-size: 0.3rem 0.3rem;
+  animation: loadMove 0.5s linear 0s infinite both;
+  /*给进度条加动画宽度从0到100*/
+  transition: 0.3s;
+  border-radius: 0.15rem;
+}
+
+@keyframes loadMove {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 -0.3rem;
+  }
+}
+
+.phoneBox {
+  z-index: -2;
+  background: url("../img/zf_phoneBg.jpg") no-repeat;
+  background-size: cover;
+}
+
+.phoneBox h2 {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.phoneBox h2 p {
+  display: block;
+  width: 2.62rem;
+  height: 1.25rem;
+  color: #fff;
+  font-size: 0.6rem;
+  margin: 0 auto;
+}
+
+.phoneBox h2 span {
+  display: none;
+  margin-top: 0.1rem;
+  line-height: 0.3rem;
+  font-size: 0.3rem;
+  color: #FFF;
+  letter-spacing: 0.05rem;
+}
+
+.phoneBox .answer {
+  position: absolute;
+  width: 5.2rem;
+  height: 3.6rem;
+  bottom: 0.3rem;
+  left: 50%;
+  margin-left: -2.6rem;
+  background: url('../img/zf_phoneListen.png');
+  background-size: 100% 100%;
+}
+
+.phoneBox .answer .markMove {
+  z-index: -1;
+  position: absolute;
+  right: -0.06rem;
+  bottom: 0.48rem;
+  box-sizing: border-box;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 0.03rem double #0f0;
+  border-radius: 50%;
+  animation: answerMove 1s linear infinite both;
+}
+
+.phoneBox .answer .markLink {
+  z-index: -1;
+  position: absolute;
+  right: -0.06rem;
+  bottom: 0.48rem;
+  box-sizing: border-box;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 0.03rem double #0f0;
+  border-radius: 50%;
+  animation: answerMove 1s linear infinite both;
+  z-index: 1;
+  animation: none;
+  border: none;
+}
+
+.phoneBox .hang {
+  position: absolute;
+  bottom: 0.3rem;
+  width: 5.2rem;
+  height: 6.59rem;
+  left: 50%;
+  margin-left: -2.6rem;
+  background: url('../img/zf_phoneDetail.png');
+  background-size: 100% 100%;
+  transform: translateY(6.89rem);
+  transition: 0.3s;
+}
+
+.phoneBox .hang .markLink {
+  z-index: 1;
+  position: absolute;
+  bottom: 0.26rem;
+  left: 50%;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-left: -0.8rem;
+}
+
+@keyframes answerMove {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.messageBox {
+  background-color: #eaeaea;
+}
+
+.messageBox .wrapper {
+  position: absolute;
+  top: 0.2rem;
+  left: 0;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.messageBox .wrapper li {
+  position: relative;
+  max-width: 3.6rem;
+  padding: 0.25rem;
+  margin-bottom: 0.4rem;
+  border-radius: 0.1rem;
+  line-height: 0.4rem;
+  font-size: 0.26rem;
+  opacity: 0;
+}
+
+.messageBox .wrapper li.active {
+  animation: messageListMove 0.3s linear both;
+}
+
+.messageBox .wrapper li .pic {
+  position: absolute;
+  top: 0;
+  width: 0.82rem;
+  height: 0.82rem;
+  border-radius: 50%;
+}
+
+.messageBox .wrapper li .arrow {
+  position: absolute;
+  top: 0.2rem;
+  width: 0.1rem;
+  height: 0.2rem;
+}
+
+.messageBox .wrapper li.self {
+  float: left;
+  margin-left: 1.25rem;
+  background: #fff;
+  border: 0.02rem solid #cacaca;
+}
+
+.messageBox .wrapper li.self .pic {
+  left: -1rem;
+}
+
+.messageBox .wrapper li.self .arrow {
+  left: -0.1rem;
+  background: url('../img/zf_messageArrow1.png') no-repeat;
+  background-size: 100% 100%;
+}
+
+.messageBox .wrapper li.inter {
+  float: right;
+  margin-right: 1.25rem;
+  background-color: #A2E45C;
+  border: 0.02rem solid #96B474;
+}
+
+.messageBox .wrapper li.inter .pic {
+  right: -1rem;
+}
+
+.messageBox .wrapper li.inter .arrow {
+  right: -0.1rem;
+  background: url('../img/zf_messageArrow2.png') no-repeat;
+  background-size: 100% 100%;
+}
+
+.messageBox .keyBoard {
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: 5.16rem;
+  background: url('../img/zf_messageKeyboard.png') no-repeat;
+  background-size: 100% 100%;
+  transform: translateY(3.7rem);
+  transition: 0.3s;
+}
+
+.messageBox .keyBoard span {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.9rem;
+  width: 4rem;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  font-size: 0.26rem;
+}
+
+.messageBox .keyBoard .submit {
+  position: absolute;
+  display: none;
+  background: url('../img/zf_messageChat.png') no-repeat;
+  background-size: 100% 100%;
+  right: 0.1rem;
+  bottom: 0.6rem;
+  width: 1.47rem;
+  height: 0.74rem;
+}
+
+@keyframes messageListMove {
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+}
+
+.cubeBox {
+  background: url("../img/zf_cubeBg.jpg") no-repeat;
+  background-size: cover;
+}
+
+.cubeBox .cube {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -2.55rem 0 0 -2.55rem;
+  width: 5.1rem;
+  height: 5.1rem;
+}
+
+.cubeBox .cube li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cubeBox .cube li img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cubeBox .tip {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  margin-left: -1.97rem;
+  width: 3.94rem;
+  height: 0.44rem;
+}
+
+.cubeBox {
+  perspective: 2000px;
+}
+
+.cubeBox .cube {
+  transform-style: preserve-3d;
+  transform: scale(0.6) rotateX(-35deg) rotateY(35deg);
+  transition: 0.3s;
+}
+
+.cubeBox .cube li:nth-child(1) {
+  transform: translateZ(2.55rem);
+}
+
+.cubeBox .cube li:nth-child(2) {
+  transform: translateZ(-2.55rem) rotateY(180deg);
+}
+
+.cubeBox .cube li:nth-child(3) {
+  transform: translateX(2.55rem) rotateY(90deg);
+}
+
+.cubeBox .cube li:nth-child(4) {
+  transform: translateX(-2.55rem) rotateY(-90deg);
+}
+
+.cubeBox .cube li:nth-child(5) {
+  transform: translateY(-2.55rem) rotateX(90deg);
+}
+
+.cubeBox .cube li:nth-child(6) {
+  transform: translateY(2.55rem) rotateX(-90deg);
+}
+
+
+/*
+     * 基于SWIPER实现切换到哪一个页卡，让哪一个页卡中的后代元素有动画效果
+     *   1.除了编写正常的CSS样式(都写在.PAGE-X中)，把需要实现动画的元素所对应的动画写在#PAGE-X中(IE选择器优先级高)
+     *   2.在SWIPER插件的某些回调函数中(例如:onTransitionEnd...)获取当前展示SLIDE的索引,
+     *     根据索引为其设置对应的ID值，当前展示的SLIDE有ID，其余的没有ID
+     *   3.为了保证切换到这一页面的时候，元素是动画运动出来的（也就是开始啥都看不见），
+     *     每个元素都是基于动画显示的（在初始样式中.PAGE? 把所有需要运动的元素透明度设置为零  
+     *    加ID后执行动画效果，在动画的最后一帧位置让透明度为1即可）
+     */
+
+
+.detailBox .swiper-container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.detailBox .swiper-container .swiper-slide {
+  position: relative;
+  /*每一个页面中的元素相对于自己的页面定位*/
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.detailBox .swiper-container .swiper-slide:nth-child(2) {
+  background: #FFF9C1;
+}
+
+.detailBox .swiper-container .swiper-slide:nth-child(3) {
+  background: #E45454;
+}
+
+.detailBox .swiper-container .swiper-slide:nth-child(4) {
+  background: #FAC471;
+}
+
+.detailBox .swiper-container .swiper-slide:nth-child(5) {
+  background: #FBFFE8;
+}
+
+.detailBox .swiper-container .swiper-slide:nth-child(6) {
+  background: #5975FF;
+}
+
+.detailBox .page1 dl {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -3.6rem 0 0 -2.7rem;
+  width: 5.4rem;
+  height: 7.2rem;
+}
+
+.detailBox img.ret {
+  position: absolute;
+  right: .15rem;
+  top: .1rem;
+  width: .8rem;
+  height: .8rem;
+}
+
+.detailBox .page1 dl dt,
+.detailBox .page1 dl dd {
+  box-sizing: border-box;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  background: #8FBB4C;
+}
+
+.detailBox .page1 dl dt {
+  text-align: center;
+  font-size: 0.4rem;
+  color: yellow;
+}
+
+.detailBox .page1 dl dd {
+  position: relative;
+  border-top: 0.02rem dashed rgba(255, 255, 255, 0.3);
+}
+
+.detailBox .page1 dl dd em {
+  position: absolute;
+  left: 0.15rem;
+  top: 50%;
+  margin-top: -0.21rem;
+  width: 0.36rem;
+  height: 0.42rem;
+  line-height: 0.42rem;
+  text-align: center;
+  font-style: normal;
+  font-size: 0.2rem;
+  color: #FFF;
+  background: url("../img/zf_outline.png") no-repeat;
+  background-size: 100% 100%;
+}
+
+.detailBox .page1 dl dd a {
+  position: relative;
+  display: block;
+  margin-left: 0.66rem;
+  font-size: 0.28rem;
+  color: #000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.detailBox .page1 dl dd em,
+.detailBox .page1 dl dd a {
+  z-index: 1000;
+}
+
+.detailBox .page2 h2 {
+  margin-top: 0.8rem;
+  line-height: 0.9rem;
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: normal;
+  opacity: 0;
+}
+
+.detailBox .page2 img:not(:nth-of-type(1)) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -0.5rem 0 0 -0.5rem;
+  width: 1rem;
+  height: 1rem;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.detailBox .page2 img:nth-last-of-type(1) {
+  margin: -0.85rem 0 0 -0.66rem;
+  width: 1.32rem;
+  height: 1.7rem;
+}
+
+.detailBox #page2 h2 {
+  animation: bounceInLeft 1s both;
+}
+
+.detailBox #page2 img:nth-last-of-type(1) {
+  animation: shake 1s both;
+}
+
+
+.detailBox #page2 img:not(:nth-of-type(1)):not(:nth-last-of-type(1)) {
+  opacity: 1;
+  animation: tada 1s 0.5s infinite both;
+}
+
+.detailBox #page2 img:nth-of-type(2) {
+  margin-top: -2.9rem;
+  /*-.5-2.4*/
+}
+
+.detailBox #page2 img:nth-of-type(3) {
+  margin-top: -1.7rem;
+  margin-left: 1.5rem;
+}
+
+.detailBox #page2 img:nth-of-type(4) {
+  margin-top: 0.7rem;
+  margin-left: 1.5rem;
+}
+
+.detailBox #page2 img:nth-of-type(5) {
+  margin-top: 1.9rem;
+}
+
+.detailBox #page2 img:nth-of-type(6) {
+  margin-top: 0.7rem;
+  margin-left: -2.5rem;
+}
+
+.detailBox #page2 img:nth-of-type(7) {
+  margin-top: -1.7rem;
+  margin-left: -2.5rem;
+}
+
+@keyframes bounceInLeft {
+
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-3000px, 0, 0);
+    transform: translate3d(-3000px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(25px, 0, 0);
+    transform: translate3d(25px, 0, 0);
+  }
+
+  75% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(5px, 0, 0);
+    transform: translate3d(5px, 0, 0);
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+
+  from,
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes tada {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%,
+  20% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%,
+  60%,
+  80% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
